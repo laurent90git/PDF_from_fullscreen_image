@@ -100,7 +100,7 @@ for ichap in range(len(chapters)):
   
 #%% Combine them
 print('Building PDF...')
-os.system(f"convert -append {temp_dir}/*.png output_raw.pdf")
+os.system(f"cd {temp_dir}; convert $(find -maxdepth 1 -type f -name '*.png' | sort -n | paste -sd\ ) ../output_raw.pdf")
 
 #%% Add OCR and compress
 print('Adding OCR and compressing...')
